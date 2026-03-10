@@ -38,9 +38,12 @@ export default function EditProduct() {
     const [fileName, setFileName] = useState(null);
     const [categories, setCategories] = useState([]);
 
-    const {
-        state: { product },
-    } = useLocation();
+    const location = useLocation();
+    const product = location.state?.product;
+
+    if (!product) {
+        return <h2>Produto não encontrado</h2>;
+    }
 
     const navigate = useNavigate();
 
